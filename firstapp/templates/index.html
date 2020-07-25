@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block covid %}
+  <h1 class="container text-center display-2">COVID-19 Tracker !</h1><br>
+  <div class="container">
+    {% if false_val %}
+      <p class="text-danger">Please enter the relevant input (Country Name)!</p><br>
+    {% endif %}
+    <form class="form-group" action="#" method="POST">
+      <select class="custom-select" name="name" id='country_select'>
+        <option selected disabled>Select the Country Name</option>
+        {% for i in clist %}
+          <option value={{i['id']}}>{{i['name']}}</option>
+        {% endfor %}
+      </select><br><br><hr><br>
+      <input type="submit" class="btn" id="sub_but" value="Submit">
+    </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block covid %}
+ <h1 class="text-center display-2">{{country}}</h1>
+ <br><hr><br>
+ <div class="container">
+   <div class="card postcard">
+       <p class="display-4">Name : {{country}}</p>
+       <p class="display-4">Confirmed Cases : {{total_conf}}</p>
+       <p class="display-4">Deaths : {{total_deaths}}</p>
+       <p class="display-4">Recoveries : {{recs}}</p>
+       <p class="display-4">Active : {{active}}</p>
+   </div>
+</div>
+<br><br>
+ <div class="container-fluid" id="right_align">
+   <a id="sub_but" href="{{url_for('index')}}"> Go Back </a>
+ </div>
+ <br><hr>
+ <div class="container">
+   <div class="card postcard">
+     <p class='display-4'>Rank : {{rank}}</p>
+     <p class="display-4">Recovery Rate : {{perc}}%</p>
+   </div>
+ </div>
+ <div class="container-fluid">
+   <p class="display-4 text-right">Last Update : {{time}}</p>
+ </div>
+
+ {% endblock %}
