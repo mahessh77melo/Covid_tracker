@@ -37,5 +37,7 @@ def country(ctry):
                         total_deaths=total_deaths,recs=recs,active=active,
                         time = time, perc=round(perc,2),rank = unsorted_country_list.index(ctry)+1)
 
+
+
 if __name__ == '__main__':
     first.run(debug=True)

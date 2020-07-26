@@ -3,12 +3,27 @@
  <h1 class="text-center display-2">{{country}}</h1>
  <br><hr><br>
  <div class="container">
+   <div class="card postcard2">
+     <div class="col-md-8 offset-md-2 ">
+       <div class="card-body">
+         <h5 class="display-4">Corona Status of {{country}}</h3>
+       </div>
+       <div class="card-body ml-auto mr-auto">
+         <canvas id="bar-chart" width="350" height="200"></canvas>
+       </div>
+     </div>
+   </div>
+ </div>
+ <br><hr><br>
+
+ <div class="container">
+   <h2 class="display-2">By the Numbers</h2>
    <div class="card postcard">
-       <p class="display-4">Country : {{country}}</p>
-       <p class="display-4">Confirmed Cases : {{total_conf}}</p>
-       <p class="display-4">Deaths : {{total_deaths}}</p>
+       <p class="display-4" id="c_name">Country : {{country}}</p>
+       <p class="display-4" id="c_total_cases">Confirmed Cases : {{total_conf}}</p>
+       <p class="display-4" id="c_deaths">Deaths : {{total_deaths}}</p>
        <p class="display-4">Recoveries : {{recs}}</p>
-       <p class="display-4">Active Cases : {{active}}</p>
+       <p class="display-4" id="c_active">Active Cases : {{active}}</p>
    </div>
 </div>
 <br><br>
@@ -22,8 +37,54 @@
      <p class="display-4">Recovery Rate : {{perc}}%</p>
    </div>
  </div>
+
  <div class="container-fluid">
    <p class="display-4 text-right">Last Update : {{time}}</p>
  </div>
+
+ <br><br>
+
+
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+<script type="text/javascript">
+var name;
+var tot;
+var deaths;
+var active;
+
+document.addEventListener("DOMContentLoaded",function(){
+
+      var deaths = document.querySelector('#c_deaths').innerHTML.split(':')[1];
+      var tot = document.querySelector('#c_total_cases').innerHTML.split(':')[1];
+      var active = document.querySelector('#c_active').innerHTML.split(':')[1];
+      var name = document.querySelector('#c_name').innerHTML.split(':')[1];
+
+});
+
+  new Chart(document.getElementById("bar-chart"), {
+      type: 'bar',
+      data: {
+        labels: ["Total Cases","Total Deaths","Active Cases","Recs"],
+        datasets: [
+          {
+            label: "Number of : ",
+            backgroundColor: ["#9e0059", "#ff0054","#ff5400","#ffbd00"],
+            data: [{{total_conf}},{{total_deaths}},{{active}},{{recs}}]
+          }
+        ]
+      },
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+        }
+      }
+  });
+
+</script>
 
  {% endblock %}
