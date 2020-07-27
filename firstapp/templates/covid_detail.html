@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 {% block covid %}
- <h1 class="text-center display-2">{{country}}</h1>
- <br><hr><br>
+ <hr>
  <div class="container">
    <div class="card postcard2">
      <div class="col-md-8 offset-md-2 ">
        <div class="card-body">
-         <h5 class="display-4">Corona Status of {{country}}</h3>
+         <h3 class="display-3">COVID-19 Summary for {{country}}</h3>
        </div>
        <div class="card-body ml-auto mr-auto">
-         <canvas id="bar-chart" width="350" height="200"></canvas>
+         <canvas id="bar-chart" width="350" height="280"></canvas>
        </div>
      </div>
    </div>
  </div>
- <br><hr><br>
+ <br><hr>
 
  <div class="container">
    <h2 class="display-2">By the Numbers</h2>
@@ -22,7 +21,7 @@
        <p class="display-4" id="c_name">Country : {{country}}</p>
        <p class="display-4" id="c_total_cases">Confirmed Cases : {{total_conf}}</p>
        <p class="display-4" id="c_deaths">Deaths : {{total_deaths}}</p>
-       <p class="display-4">Recoveries : {{recs}}</p>
+       <p class="display-4" id="c_recs">Recoveries : {{recs}}</p>
        <p class="display-4" id="c_active">Active Cases : {{active}}</p>
    </div>
 </div>
@@ -30,7 +29,7 @@
  <div class="container-fluid" id="right_align">
    <a id="sub_but" href="{{url_for('index')}}"> Go Back </a>
  </div>
- <br><hr>
+ <br>
  <div class="container">
    <div class="card postcard">
      <p class='display-4'>Rank : {{rank}}</p>
@@ -41,20 +40,15 @@
  <div class="container-fluid">
    <p class="display-4 text-right">Last Update : {{time}}</p>
  </div>
-
+ <br>
+ <div class="container-fluid" id="right_align">
+   <a href="https://github.com/mahessh77melo/Covid_tracker" id="sub_but">{{codename}}</a>
+ </div>
+<hr>
  <br><br>
-
-
-
- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script type="text/javascript">
-var name;
-var tot;
-var deaths;
-var active;
 
 document.addEventListener("DOMContentLoaded",function(){
 
@@ -65,25 +59,31 @@ document.addEventListener("DOMContentLoaded",function(){
 
 });
 
-  new Chart(document.getElementById("bar-chart"), {
-      type: 'bar',
-      data: {
-        labels: ["Total Cases","Total Deaths","Active Cases","Recoveries"],
-        datasets: [
-          {
-            label: "Number of : ",
-            backgroundColor: ["#9e0059", "#ff0054","#ff5400","#ffbd00"],
-            data: [{{total_conf}},{{total_deaths}},{{active}},{{recs}}]
-          }
-        ]
-      },
-      options: {
-        legend: { display: false },
-        title: {
-          display: true,
+Chart.defaults.global.defaultFontFamily = "'Dosis',sans-serif"
+Chart.defaults.global.defaultFontSize = 18
+Chart.defaults.global.defaultFontColor = '#003049'
+Chart.defaults.global.animation.duration = 1500
+Chart.defaults.global.animation.easing = 'easeOutBounce'
+new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["Total Cases","Total Deaths","Active Cases","Recoveries"],
+      datasets: [
+        {
+          label: "Amount ",
+          backgroundColor: ["#9e0059", "#ff0054","#ff5400","#ffbd00"],
+          borderColor:['#390099','#390099','#390099','#390099'],
+          data: [{{total_conf}},{{total_deaths}},{{active}},{{recs}}]
         }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
       }
-  });
+    }
+});
 
 </script>
 

@@ -35,7 +35,7 @@ def country(ctry):
     time = datetime.fromtimestamp(stat['last_update']/1000)
     return render_template('covid_detail.html',country=ctry,total_conf=total_conf,
                         total_deaths=total_deaths,recs=recs,active=active,
-                        time = time, perc=round(perc,2),rank = unsorted_country_list.index(ctry)+1)
+                        time = time, perc=round(perc,2),codename = '</> Source Code',rank = unsorted_country_list.index(ctry)+1)
 
 
 

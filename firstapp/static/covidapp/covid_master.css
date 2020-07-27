@@ -7,8 +7,8 @@ body{
   font-family: 'Dosis', sans-serif;
   text-shadow: 2px 2px 3.5px #e76f51;
   color: white;
-  background-position: center;
-  background-size: auto;
+  background-position: auto;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 #sub_but{
@@ -78,4 +78,16 @@ html {
   padding-bottom : 40px;
   color: #003049;
   font-family: 'Dosis', sans-serif;
+}
+#c_total_cases{
+  color: yellow;
+}
+#c_deaths{
+  color: #820263;
+}
+#c_recs{
+  color:#06d6a0;
+}
+#c_active{
+  color:orange;
 }
