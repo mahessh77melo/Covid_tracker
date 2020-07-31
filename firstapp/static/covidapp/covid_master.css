@@ -7,6 +7,7 @@ body{
   font-family: 'Dosis', sans-serif;
   text-shadow: 2px 2px 3.5px #e76f51;
   color: white;
+  background-image:linear-gradient(to right bottom,rgba(238, 108, 77,0.5),rgba(41, 50, 65, 0.5));
   background-position: auto;
   background-size: cover;
   background-repeat: no-repeat;
