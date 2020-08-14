@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Covid Tracker|Melo</title>
-  </head>
-  <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="/static/covidapp/covid_master.css">
-  <link rel="shortcut icon" href="#">
-  <body background-image="{{ url_for('static',filename='covidapp/covid_animation.jpg')}}">
-    {% block covid %}
-
-    {% endblock %}
-
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <title>Covid Tracker|Melo</title>
+    </head>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dosis&display=swap"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/covidapp/covid_master.css" />
+    <link rel="shortcut icon" href="#" />
+    <body>
+        {% block covid %} {% endblock %}
+    </body>
 </html>

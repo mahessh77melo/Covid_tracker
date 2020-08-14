@@ -1,90 +1,93 @@
-{% extends "base.html" %}
-{% block covid %}
- <hr>
- <div class="container">
-   <div class="card postcard2">
-     <div class="col-md-8 offset-md-2 ">
-       <div class="card-body">
-         <h3 class="display-3">COVID-19 Summary for {{country}}</h3>
-       </div>
-       <div class="card-body ml-auto mr-auto">
-         <canvas id="bar-chart" width="350" height="280"></canvas>
-       </div>
-     </div>
-   </div>
- </div>
- <br><hr>
-
- <div class="container">
-   <h2 class="display-2">By the Numbers</h2>
-   <div class="card postcard">
-       <p class="display-4" id="c_name">Country : {{country}}</p>
-       <p class="display-4" id="c_total_cases">Confirmed Cases : {{total_conf}}</p>
-       <p class="display-4" id="c_deaths">Deaths : {{total_deaths}}</p>
-       <p class="display-4" id="c_recs">Recoveries : {{recs}}</p>
-       <p class="display-4" id="c_active">Active Cases : {{active}}</p>
-   </div>
+{% extends "base.html" %} {% block covid %}
+<hr />
+<div class="container">
+    <div class="card postcard2">
+        <div class="col-md-8 offset-md-2">
+            <div class="card-body">
+                <h3 class="display-3">COVID-19 Summary for {{country}}</h3>
+            </div>
+            <div class="card-body ml-auto mr-auto">
+                <canvas id="bar-chart" width="350" height="280"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
-<br><br>
- <div class="container-fluid" id="right_align">
-   <a id="sub_but" href="{{url_for('index')}}"> Go Back </a>
- </div>
- <br>
- <div class="container">
-   <div class="card postcard">
-     <p class='display-4'>Rank : {{rank}}</p>
-     <p class="display-4">Recovery Rate : {{perc}}%</p>
-   </div>
- </div>
+<br />
+<hr />
 
- <div class="container-fluid">
-   <p class="display-4 text-right">Last Update : {{time}}</p>
- </div>
- <br>
- <div class="container-fluid" id="right_align">
-   <a href="https://github.com/mahessh77melo/Covid_tracker" id="sub_but">{{codename}}</a>
- </div>
-<hr>
- <br><br>
+<div class="container">
+    <h2 class="display-2">By the Numbers</h2>
+    <div class="card postcard">
+        <p class="display-4" id="c_name">Country : {{country}}</p>
+        <p class="display-4" id="c_total_cases">
+            Confirmed Cases : {{total_conf}}
+        </p>
+        <p class="display-4" id="c_deaths">Deaths : {{total_deaths}}</p>
+        <p class="display-4" id="c_recs">Recoveries : {{recs}}</p>
+        <p class="display-4" id="c_active">Active Cases : {{active}}</p>
+    </div>
+</div>
+<br /><br />
+<div class="container-fluid" id="right_align">
+    <a id="sub_but" href="{{url_for('index')}}"> Go Back </a>
+</div>
+<br />
+<div class="container">
+    <div class="card postcard">
+        <p class="display-4">Rank : {{rank}}</p>
+        <p class="display-4">Recovery Rate : {{perc}}%</p>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <p class="display-4 text-right">Last Update : {{time}}</p>
+</div>
+<br />
+<div class="container-fluid" id="right_align">
+    <a href="https://github.com/mahessh77melo/Covid_tracker" id="sub_but"
+        >{{codename}}</a
+    >
+</div>
+<hr />
+<br /><br />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script type="text/javascript">
 
-document.addEventListener("DOMContentLoaded",function(){
+    document.addEventListener("DOMContentLoaded",function(){
 
-      var deaths = document.querySelector('#c_deaths').innerHTML.split(':')[1];
-      var tot = document.querySelector('#c_total_cases').innerHTML.split(':')[1];
-      var active = document.querySelector('#c_active').innerHTML.split(':')[1];
-      var name = document.querySelector('#c_name').innerHTML.split(':')[1];
+          var deaths = document.querySelector('#c_deaths').innerHTML.split(':')[1];
+          var tot = document.querySelector('#c_total_cases').innerHTML.split(':')[1];
+          var active = document.querySelector('#c_active').innerHTML.split(':')[1];
+          var name = document.querySelector('#c_name').innerHTML.split(':')[1];
 
-});
+    });
 
-Chart.defaults.global.defaultFontFamily = "'Dosis',sans-serif"
-Chart.defaults.global.defaultFontSize = 18
-Chart.defaults.global.defaultFontColor = '#003049'
-Chart.defaults.global.animation.duration = 1500
-Chart.defaults.global.animation.easing = 'easeOutBounce'
-new Chart(document.getElementById("bar-chart"), {
-    type: 'bar',
-    data: {
-      labels: ["Total Cases","Total Deaths","Active Cases","Recoveries"],
-      datasets: [
-        {
-          label: "Amount ",
-          backgroundColor: ["#9e0059", "#ff0054","#ff5400","#ffbd00"],
-          borderColor:['#390099','#390099','#390099','#390099'],
-          data: [{{total_conf}},{{total_deaths}},{{active}},{{recs}}]
+    Chart.defaults.global.defaultFontFamily = "'Dosis',sans-serif"
+    Chart.defaults.global.defaultFontSize = 18
+    Chart.defaults.global.defaultFontColor = '#003049'
+    Chart.defaults.global.animation.duration = 1500
+    Chart.defaults.global.animation.easing = 'easeOutBounce'
+    new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+          labels: ["Total Cases","Total Deaths","Active Cases","Recoveries"],
+          datasets: [
+            {
+              label: "Amount ",
+              backgroundColor: ["#9e0059", "#ff0054","#ff5400","#ffbd00"],
+              borderColor:['#390099','#390099','#390099','#390099'],
+              data: [{{total_conf}},{{total_deaths}},{{active}},{{recs}}]
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+          }
         }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-      }
-    }
-});
-
+    });
 </script>
 
- {% endblock %}
+{% endblock %}
