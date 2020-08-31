@@ -20,7 +20,7 @@ def index():
             return redirect(url_for("country", ctry=name))
 
     else:
-        return render_template("index.html", false_val=False,
+        return render_template("index.html",
                                clist=sorted(cov.list_countries(), key=lambda x: x['name']))
 
 
