@@ -5,8 +5,6 @@ cov = Covid()
 first = Flask(__name__, static_url_path="/static")
 first.secret_key = "asfjbdsh"
 
-country_list = [i['name']
-                for i in sorted(cov.list_countries(), key=lambda x:x['name'])]
 id_list = [i['id']
            for i in sorted(cov.list_countries(), key=lambda x:x['name'])]
 unsorted_country_list = [i['name'] for i in cov.list_countries()]
